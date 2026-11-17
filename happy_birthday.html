@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Parabéns, meu amor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,300;1,9..144,600&family=Karla:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#fff7ec; --bg2:#ffe0ec; --sky:#1fb3c7; --sun:#f5a623; --vio:#8f5cf2; --ink:#4a0f26; --soft:#7b3550;
+  --rose:#e0305f; --gold:#b8862f; --card:#ffffffcc; --line:#e0305f33;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#1b1147; --bg2:#3b1a78; --sky:#4fd8e8; --sun:#ffd166; --vio:#b794ff; --ink:#ffe9ee; --soft:#f2b8c8;
+    --rose:#ff5c86; --gold:#f2d6a2; --card:#ffffff12; --line:#ff5c8644;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#1b1147; --bg2:#3b1a78; --sky:#4fd8e8; --sun:#ffd166; --vio:#b794ff; --ink:#ffe9ee; --soft:#f2b8c8;
+  --rose:#ff5c86; --gold:#f2d6a2; --card:#ffffff12; --line:#ff5c8644;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{
+  margin:0; background:radial-gradient(120% 80% at 50% 0%, var(--bg2), var(--bg) 70%) fixed;
+  color:var(--ink); font-family:'Karla',system-ui,sans-serif; line-height:1.6; overflow-x:hidden;
+}
+h1,h2,.serif{font-family:'Fraunces',Georgia,serif}
+section{max-width:760px; margin:0 auto; padding:72px 22px; text-align:center}
+
+/* HERO */
+.hero{min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; position:relative}
+.heart-wrap{width:min(62vw,280px); position:relative}
+.heart-wrap svg{width:100%; overflow:visible; filter:drop-shadow(0 12px 28px var(--line))}
+.heart-line{fill:none; stroke:var(--rose); stroke-width:2.4; stroke-linecap:round; stroke-dasharray:260; stroke-dashoffset:260; animation:draw 2.2s ease forwards}
+.heart-fill{fill:var(--rose); opacity:0; animation:fill 1s 2s ease forwards}
+.heart-shine{fill:#fff; opacity:0; animation:fill .8s 2.6s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fill{to{opacity:1}}
+@keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.16)}28%{transform:scale(1)}42%{transform:scale(1.1)}70%{transform:scale(1)}}
+@keyframes halo{0%,100%{opacity:0;transform:scale(.8)}14%{opacity:.5;transform:scale(1.25)}28%{opacity:.12;transform:scale(1)}42%{opacity:.38;transform:scale(1.18)}70%{opacity:0;transform:scale(.8)}}
+.heart-wrap svg{position:relative; z-index:1}
+.heart-wrap svg.beat{transform-origin:50% 55%; animation:beat 1.3s 2.9s ease-in-out infinite}
+.heart-wrap::after{content:""; position:absolute; inset:18% 12% 8%; border-radius:50%; background:var(--rose); filter:blur(26px); opacity:0; z-index:0; animation:halo 1.3s 2.9s ease-in-out infinite}
+.hero h1{font-size:clamp(3rem,13vw,6.4rem); font-weight:300; font-style:italic; line-height:1; margin:.15em 0 0; letter-spacing:-.02em; opacity:0; animation:rise 1.2s 2.4s ease forwards}
+.hero .nome{font-size:clamp(1.4rem,5vw,2.2rem); color:var(--gold); font-weight:600; font-style:italic; opacity:0; animation:rise 1.2s 3s ease forwards}
+.hero .sub{color:var(--soft); max-width:30ch; margin:.4em 0 0; opacity:0; animation:rise 1.2s 3.5s ease forwards}
+.scroll{position:absolute; bottom:max(20px,env(safe-area-inset-bottom,0px)); color:var(--soft); font-size:.9rem; opacity:0; animation:rise 1s 4.2s ease forwards}
+@keyframes rise{from{opacity:0; transform:translateY(14px)}to{opacity:1; transform:none}}
+
+/* MENSAGEM */
+.love h2{font-size:clamp(2.4rem,9vw,4.2rem); font-weight:600; font-style:italic; margin:0 0 .3em; color:var(--rose)}
+.love p{font-size:1.15rem; max-width:44ch; margin:0 auto 1em; color:var(--soft)}
+.love p.big{font-family:'Fraunces',Georgia,serif; font-size:clamp(1.3rem,4.4vw,1.8rem); color:var(--ink); font-style:italic}
+
+/* MOTIVOS */
+.reasons h2{font-size:clamp(1.8rem,6vw,2.6rem); font-weight:400; margin:0 0 .2em}
+.reasons>p{color:var(--soft); margin:0 0 28px}
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px}
+.card{
+  appearance:none; font:inherit; color:inherit; cursor:pointer; text-align:center;
+  background:var(--card); border:1px solid var(--line); border-radius:22px; padding:22px 14px; min-height:132px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  backdrop-filter:blur(6px); transition:transform .25s, border-color .25s;
+}
+.card:hover{transform:translateY(-3px); border-color:var(--rose)}
+.card:focus-visible,.cta:focus-visible{outline:3px solid var(--gold); outline-offset:3px}
+.card .h{font-size:1.9rem; color:var(--rose); transition:transform .4s}
+.card .t{font-family:'Fraunces',Georgia,serif; font-style:italic; font-size:1.02rem; display:none}
+.card.open .t{display:block; animation:rise .6s ease}
+.card.open .h{transform:scale(.7)}
+.card.open .lbl{display:none}
+.lbl{color:var(--soft); font-size:.95rem}
+
+/* FINAL */
+.finale h2{font-size:clamp(2rem,7vw,3.2rem); font-weight:300; font-style:italic; margin:0 0 .5em}
+.cta{
+  appearance:none; border:0; cursor:pointer; font:600 1.1rem 'Karla',sans-serif; color:#fff;
+  background:var(--rose); padding:16px 34px; border-radius:999px; box-shadow:0 10px 30px var(--line);
+  transition:transform .2s;
+}
+.cta:hover{transform:scale(1.05)} .cta:active{transform:scale(.97)}
+footer{padding:30px 22px 50px; text-align:center; color:var(--soft); font-size:.9rem}
+
+/* OBJETOS DE ANIVERSÁRIO */
+#party{position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden}
+.po{position:absolute; opacity:.4; animation:bob ease-in-out infinite alternate; will-change:transform}
+@keyframes bob{from{transform:translateY(0) rotate(var(--r1))}to{transform:translateY(-20px) rotate(var(--r2))}}
+section,footer{position:relative; z-index:2}
+.card:nth-child(3n+2) .h{color:var(--sun)}
+.card:nth-child(3n) .h{color:var(--sky)}
+
+/* CORAÇÕES FLUTUANTES */
+#sky{position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:5}
+.fh{position:absolute; bottom:-40px; color:var(--rose); animation:float linear forwards; will-change:transform}
+@keyframes float{to{transform:translate(var(--dx),-115vh) rotate(var(--rot)); opacity:0}}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01s !important; animation-delay:0s !important; animation-iteration-count:1 !important; scroll-behavior:auto}
+  .heart-wrap svg.beat,.heart-wrap::after{animation-duration:1.3s !important; animation-iteration-count:infinite !important}
+}
+</style>
+</head>
+<body>
+<div id="party" aria-hidden="true"></div>
+<div id="sky" aria-hidden="true"></div>
+
+<section class="hero">
+  <div class="heart-wrap" aria-hidden="true">
+    <svg class="beat" viewBox="0 0 100 90">
+      <path class="heart-fill" d="M50 85C12 56 0 31 14 16 27 3 44 9 50 24 56 9 73 3 86 16 100 31 88 56 50 85Z"/>
+      <path class="heart-shine" d="M22 24c4-6 10-8 15-5-6 0-11 3-13 9-2-1-3-2-2-4Z"/>
+      <path class="heart-line" d="M50 85C12 56 0 31 14 16 27 3 44 9 50 24 56 9 73 3 86 16 100 31 88 56 50 85Z"/>
+    </svg>
+  </div>
+  <h1>Parabéns</h1>
+  <div class="nome serif" id="nome">meu amor</div>
+  <p class="sub">Feliz aniversário! Hoje o dia é todo seu. 🎂</p>
+  <div class="scroll" aria-hidden="true">role para baixo ↓</div>
+</section>
+
+<section class="love">
+  <h2>Eu te amo</h2>
+  <p class="big">“Obrigado por existir e por escolher caminhar ao meu lado.”</p>
+  <p>Cada dia com você tem mais luz, mais riso e mais sentido. Que o seu novo ano seja cheio de tudo o que você merece, e que eu esteja em cada capítulo dele.</p>
+</section>
+
+<section class="reasons">
+  <h2>Por que eu te amo</h2>
+  <p>Toque em cada coração.</p>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="finale">
+  <h2>Feliz aniversário, <span id="nome2">meu amor</span>.</h2>
+  <button class="cta" id="burst" type="button">Receber meu abraço 🎶</button>
+</section>
+
+<footer>Feito com amor, só para você.</footer>
+
+<script>
+// ✏️ PERSONALIZE AQUI
+const NOME = "Graciela";
+const MOTIVOS = [
+  "Seu sorriso muda o meu dia inteiro.",
+  "Você cuida de tudo com carinho.",
+  "Com você, qualquer lugar vira casa.",
+  "Você me faz rir até nos dias difíceis.",
+  "Você acredita em mim.",
+  "Cada dia ao seu lado é um presente.",
+  "Você é exemplo de guerreira.",
+  "Você é uma excelente mãe para o nosso filho que Deus nos deu.",
+  "Eu acredito em você e, juntos, encontraremos um pouco de arco-íris novamente."
+];
+
+document.getElementById('nome').textContent = NOME;
+document.getElementById('nome2').textContent = NOME;
+document.title = "Parabéns, " + NOME;
+
+// Faixa colorida no título
+const h1 = document.querySelector('.hero h1');
+const cores = ['rose','sun','sky','vio'];
+h1.innerHTML = [...h1.textContent].map((c,i) => `<span style="color:var(--${cores[i%4]})">${c}</span>`).join('');
+
+// Objetos de aniversário no fundo
+const party = document.getElementById('party');
+['🎈','🎁','🎂','🎉','🎈','🧁','🎊','🎀','🎈','🎁','🍰','⭐','🎉','🎈','🎂','🎊'].forEach((emo,i) => {
+  const s = document.createElement('span');
+  s.className = 'po'; s.textContent = emo;
+  s.style.left = ((i%4)*25 + Math.random()*16 + 2) + 'vw';
+  s.style.top = (Math.floor(i/4)*25 + Math.random()*14 + 2) + 'vh';
+  s.style.fontSize = (30 + Math.random()*34) + 'px';
+  s.style.animationDuration = (4 + Math.random()*4) + 's';
+  s.style.animationDelay = (-Math.random()*4) + 's';
+  s.style.setProperty('--r1', (Math.random()*24-12) + 'deg');
+  s.style.setProperty('--r2', (Math.random()*24-12) + 'deg');
+  party.appendChild(s);
+});
+
+const sky = document.getElementById('sky');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const glyphs = ['♥','❤','♡'];
+
+function heart(x, size, dur, delay){
+  const el = document.createElement('span');
+  el.className = 'fh';
+  el.textContent = glyphs[Math.floor(Math.random()*glyphs.length)];
+  el.style.left = x + 'vw';
+  el.style.fontSize = size + 'px';
+  el.style.opacity = (0.35 + Math.random()*0.5).toFixed(2);
+  el.style.setProperty('--dx', (Math.random()*80-40) + 'px');
+  el.style.setProperty('--rot', (Math.random()*60-30) + 'deg');
+  el.style.animationDuration = dur + 's';
+  el.style.animationDelay = delay + 's';
+  sky.appendChild(el);
+  setTimeout(() => el.remove(), (dur + delay) * 1000 + 200);
+}
+
+if(!reduce){
+  setTimeout(() => {
+    setInterval(() => heart(Math.random()*100, 12 + Math.random()*26, 7 + Math.random()*6, 0), 700);
+  }, 2800);
+}
+
+// Motivos
+const grid = document.getElementById('grid');
+MOTIVOS.forEach(txt => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'card';
+  b.setAttribute('aria-expanded','false');
+  b.innerHTML = '<span class="h">♥</span><span class="lbl">toque aqui</span><span class="t"></span>';
+  b.querySelector('.t').textContent = txt;
+  b.addEventListener('click', () => {
+    const open = b.classList.toggle('open');
+    b.setAttribute('aria-expanded', open);
+    if(open){
+      const r = b.getBoundingClientRect();
+      burstAt(r.left + r.width/2, r.top + r.height/2, 8);
+    }
+  });
+  grid.appendChild(b);
+});
+
+// Explosão de corações
+function burstAt(cx, cy, n){
+  for(let i=0;i<n;i++){
+    const s = document.createElement('span');
+    s.textContent = '♥';
+    s.style.cssText = `position:fixed;left:${cx}px;top:${cy}px;color:var(--rose);font-size:${14+Math.random()*22}px;pointer-events:none;z-index:9`;
+    document.body.appendChild(s);
+    const a = Math.random()*Math.PI*2, d = 60 + Math.random()*140;
+    s.animate([
+      {transform:'translate(-50%,-50%) scale(.4)', opacity:1},
+      {transform:`translate(-50%,-50%) translate(${Math.cos(a)*d}px,${Math.sin(a)*d - 40}px) scale(1.2)`, opacity:0}
+    ], {duration:1100 + Math.random()*700, easing:'cubic-bezier(.2,.7,.3,1)'}).onfinish = () => s.remove();
+  }
+}
+
+// Chuva de corações
+const rainSet = ['♥','🎈','🎉','♥','🎊','🎁','♥','⭐'];
+
+// Música: melodia de "Parabéns pra você" sintetizada (sem arquivo de áudio)
+let audioCtx, tocando = false;
+function birthdayTune(){
+  if(tocando) return;
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if(!AC) return;
+  try{
+    audioCtx = audioCtx || new AC();
+    if(audioCtx.state === 'suspended') audioCtx.resume();
+    const N = {G4:392, A4:440, B4:493.88, C5:523.25, D5:587.33, E5:659.25, F5:698.46, G5:783.99};
+    const song = [['G4',.75],['G4',.25],['A4',1],['G4',1],['C5',1],['B4',2],
+      ['G4',.75],['G4',.25],['A4',1],['G4',1],['D5',1],['C5',2],
+      ['G4',.75],['G4',.25],['G5',1],['E5',1],['C5',1],['B4',1],['A4',2],
+      ['F5',.75],['F5',.25],['E5',1],['C5',1],['D5',1],['C5',2.5]];
+    let t = audioCtx.currentTime + .1;
+    const beat = .5;
+    song.forEach(([n,d]) => {
+      const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+      const len = d*beat;
+      o.type = 'triangle'; o.frequency.value = N[n];
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(.28, t + .02);
+      g.gain.exponentialRampToValueAtTime(.001, t + len*.95 + .25);
+      o.connect(g); g.connect(audioCtx.destination);
+      o.start(t); o.stop(t + len + .3);
+      t += len;
+    });
+    tocando = true;
+    setTimeout(() => tocando = false, (t - audioCtx.currentTime) * 1000);
+  }catch(err){ tocando = false; }
+}
+
+function rain(){
+  const H = innerHeight;
+  for(let i=0;i<110;i++){
+    const s = document.createElement('span');
+    s.textContent = rainSet[i%rainSet.length];
+    const sz = 14 + Math.random()*30;
+    const col = i%4===0 ? 'var(--gold)' : 'var(--rose)';
+    s.style.cssText = `position:fixed;top:-50px;left:${Math.random()*100}vw;color:${col};font-size:${sz}px;pointer-events:none;z-index:9;opacity:${(0.6+Math.random()*0.4).toFixed(2)}`;
+    document.body.appendChild(s);
+    const sway = Math.random()*80-40;
+    s.animate([
+      {transform:'translate(0,0) rotate(0deg)'},
+      {transform:`translate(${sway}px,${H+100}px) rotate(${Math.random()*120-60}deg)`}
+    ], {duration:2800+Math.random()*2400, delay:Math.random()*3500, easing:'cubic-bezier(.3,.1,.7,.9)', fill:'both'}).onfinish = () => s.remove();
+  }
+}
+
+document.getElementById('burst').addEventListener('click', e => {
+  const r = e.currentTarget.getBoundingClientRect();
+  burstAt(r.left + r.width/2, r.top + r.height/2, 46);
+  rain();
+  birthdayTune();
+  e.currentTarget.textContent = 'Eu te amo ♥';
+});
+</script>
+</body>
+</html>
